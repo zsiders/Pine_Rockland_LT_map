@@ -4,7 +4,7 @@
 
 ## Work in progress -- unfinalized
 
-####The data is found in two folders:
+#### The data is found in two folders:
 - Locality Data
 - Map Layers
 
@@ -12,7 +12,7 @@ Locality Data contains a CSV file of the lat-long locations of parks used to gen
 
 Map Layers contains distributions of South Florida Pine Rocklands: Rocks2 is the historical distribution, Rocklands is the current, and dade_pine_rockland_habitat_final is Miami-Dade Pine Rockland habitat. 
 
-####The mapping routine is contained in pr_map.R
+#### The mapping routine is contained in pr_map.R
 
 The routine is basically:
 1) Read in the data
