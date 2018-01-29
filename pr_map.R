@@ -82,7 +82,7 @@ pdf(file="PR_draft_1.pdf", width=4, height=5.5)
 	symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
 	legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')
 	legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')
-	scale2 <- 7000 #sets size
+	scale2 <- 6000 #sets size
 	v2 <- rep(scale2,10)
 	v2[seq(2,10,by=2)] <- scale2*1/2
 	symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
