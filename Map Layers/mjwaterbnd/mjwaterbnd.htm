@@ -1,0 +1,573 @@
+<HTML>
+<HEAD>
+<TITLE> FGDL Documentation </TITLE>
+<STYLE>
+          .pre { color: black; font-size: 12pt; font-weight: normal; font-family: courier; }
+	  strong {font-weight: normal; text-transform: uppercase; }
+</STYLE>
+</HEAD>
+<BODY>
+<table width="90%">
+<tr>
+<td>
+<strong><b>FLORIDA GEOGRAPHIC DATA LIBRARY DOCUMENTATION</b></strong><br />
+
+<p>
+<strong><b>TITLE: MAJOR WATERBODIES OF FLORIDA</b></strong>
+</p>
+<pre>
+Geodataset Name:       MJWATERBND
+Geodataset Type:       SHAPEFILE
+Geodataset Feature:    <strong>Polygon</strong>
+Feature Count:         289
+</pre>
+</td>
+</tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tr>
+<td>
+<strong><b>GENERAL DESCRIPTION:</b></strong>
+<table width="650">
+<tr>
+<td>
+This is a subset of the U.S. National Atlas Water Feature Areas representing the state of Florida.
+
+U.S. National Atlas Water Feature Areas represents the water feature areas (for example, bays, glaciers, lakes, and swamps) of the United States.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td></td></tr>
+<tr>
+<td>
+<pre>
+DATA SOURCE(S):                    National Atlas of the United States and the United States Geological Survey
+SCALE OF ORIGINAL SOURCE MAPS:     2000000
+DATE OF AUTOMATION OF SOURCE:      20061001
+GEODATASET EXTENT:                 State of Florida
+</pre>
+</td>
+</tr>
+</table>
+<P>
+<strong><b>FEATURE ATTRIBUTE TABLES:</b></strong>
+</P>
+<pre>Datafile Name: MJWATERBND.DBF</pre>
+<table width="75%" cellspacing="0" cellpadding="0" border="0">
+<tr align="left">
+<td> ITEM NAME </td>
+<td>WIDTH</td>
+<td>TYPE</td>
+<td>N. DECIMAL DEGREES</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">OBJECTID
+</DIV>
+</td>
+<td>4</td>
+<td>OID</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">FEATURE
+</DIV>
+</td>
+<td>22</td>
+<td>String</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">NAME
+</DIV>
+</td>
+<td>40</td>
+<td>String</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">STATE
+</DIV>
+</td>
+<td>20</td>
+<td>String</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">SQMI
+</DIV>
+</td>
+<td>13</td>
+<td>Number</td>
+<td>2</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">DESCRIPT
+</DIV>
+</td>
+<td>30</td>
+<td>String</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">FGDLAQDATE
+</DIV>
+</td>
+<td>8</td>
+<td>Date</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">AUTOID
+</DIV>
+</td>
+<td>4</td>
+<td>Number</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">SHAPE
+</DIV>
+</td>
+<td>4</td>
+<td>Geometry</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">SHAPE.AREA
+</DIV>
+</td>
+<td>0</td>
+<td>Double</td>
+<td>---</td>
+</tr>
+<tr>
+<td>
+<DIV align="left">SHAPE.LEN
+</DIV>
+</td>
+<td>0</td>
+<td>Double</td>
+<td>---</td>
+</tr>
+</table>
+<p>
+<strong><b>FEATURE ATTRIBUTE TABLES CODES AND VALUES:</b></strong>
+</p>
+<P />
+<table width="75%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td width="30%">Item<pre></pre></td>
+<td>Item Description<pre></pre></td>
+</tr>
+<tr valign="top">
+<td>OBJECTID</td>
+<td>
+Internal feature number.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>FEATURE</td>
+<td>
+The type of water feature.<table>
+<tr>
+<td>
+Canal = An artificial open waterway constructed to carry water, to irrigate or drain land, to connect two or more bodies of water, or to serve as a waterway for water craft.<br /><pre></pre>
+Lake = A standing body of water with a predominately natural shoreline surrounded by land.<br /><pre></pre>
+Lake Dry = An area that at one time contained a standing body of water.<br /><pre></pre>
+Lake Intermittent = A standing body of water that contains water for only part of the year.<br /><pre></pre>
+Reservoir = A constructed basin formed to contain water.<br /><pre></pre>
+Reservoir Intermittent = A constructed basin formed to contain water for only part of the year.<br /><pre></pre>
+Stream = A body of water flowing in a channel or watercourse.<br /><pre></pre>
+Swamp or Marsh = A noncultivated, vegetated area that is inundated or saturated for a significant part of the year.<br /><pre></pre>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>NAME</td>
+<td>
+The water feature name.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>STATE</td>
+<td>
+The two-letter abbreviation for each state where the water feature is located.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>SQMI</td>
+<td>
+The area of the water feature in square miles.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>DESCRIPT</td>
+<td>
+Description field based on NAME.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>FGDLAQDATE</td>
+<td>
+Date FGDL acquired the data.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>AUTOID</td>
+<td>
+Unique ID field.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>SHAPE</td>
+<td>
+Feature geometry.<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>SHAPE.AREA</td>
+<td>
+Area in meters<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+<tr valign="top">
+<td>SHAPE.LEN</td>
+<td>
+Perimeter in meters<table>
+<tr>
+<td>
+</td>
+</tr>
+</table>
+<br />
+</td>
+</tr>
+</table>
+<table>
+<tr>
+<td>
+<pre></pre>
+</td>
+</tr>
+</table>
+<strong><b>USER NOTES:</b></strong>
+<br />
+<table width="500">
+<tr>
+<td>
+<pre>
+This data is provided "as is". GeoPlan relied on the integrity of the original
+data layer s topology.
+
+The shapefile is converted to SDC (Smart Data Compression) format using
+either ESRI SDC Data Development Kit Professional 2 (DDKP2) or tools in
+ArcGIS.  The SDC data set is then loaded into ArcSDE to verify and validate
+the geometry.
+</pre>
+</td>
+</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<pre>
+This data is provided "as is" by GeoPlan and is complete to our knowledge.
+
+After processing, the data set is checked for drawing display and number of
+records and file sizes compared with source materials. Data completeness
+generally reflects the content of the original Digital Line Graph (DLG) files.
+</pre>
+</td>
+</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<pre>
+GeoPlan relied on the integrity of the attribute information within
+the original data.
+</pre>
+</td>
+</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<pre>
+Largest scale when displaying the data: 1:1,000,000.<br /><br />
+</pre>
+</td>
+</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<pre>
+U.S. National Atlas Water Feature Areas provides the water feature areas for 
+geographic display and analysis at regional and national levels.<br /><br />
+</pre>
+</td>
+</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<pre>
+The geospatial part of this data set was originally extracted from the individual
+1:2,000,000-scale State boundary Digital Line Graph (DLG) files produced by
+the U.S. Geological Survey which have a positional accuracy of 1,720 meters.
+It was updated several times using various sources whose horizontal positional
+accuracies are unknown.<br /><br />
+</pre>
+</td>
+</tr>
+</table>
+<table width="500">
+<tr>
+<td>
+<pre>
+This data is provided 'as is' and its vertical positional accuracy
+has not been verified by GeoPlan<br /><br />
+</pre>
+</td>
+</tr>
+</table>
+<table width="550">
+<tr>
+<td>
+<pre>
+THE DATA INCLUDED IN FGDL ARE 'AS IS' AND SHOULD NOT BE CONSTRUED
+AS LEGALLY BINDING. THE UNIVERSITY OF FLORIDA GEOPLAN CENTER SHALL
+NOT BE LIABLE FOR ANY DAMAGES SUFFERED AS A RESULT OF USING,
+MODIFYING, CONTRIBUTING OR DISTRIBUTING THE MATERIALS.
+
+A note about data scale: 
+
+Scale is an important factor in data usage.  Certain scale datasets
+are not suitable for some project, analysis, or modeling purposes.
+Please be sure you are using the best available data. 
+
+1:24000 scale datasets are recommended for projects that are at the
+county level.
+1:24000 data should NOT be used for high accuracy base mapping such
+as property parcel boundaries.
+1:100000 scale datasets are recommended for projects that are at the
+multi-county or regional level.
+1:125000 scale datasets are recommended for projects that are at the
+regional or state level or larger.
+
+Vector datasets with no defined scale or accuracy should be
+considered suspect. Make sure you are familiar with your data
+before using it for projects or analysis. Every effort has been
+made to supply the user with data documentation. For additional
+information, see the References section and the Data Source Contact
+section of this documentation. For more information regarding
+scale and accuracy, see our webpage at:
+http://geoplan.ufl.edu/education.html</pre>
+<br />
+</td>
+</tr>
+</table>
+<strong><b>REFERENCES: </b></strong>
+<table width="60%">
+<tr>
+<td>
+<pre>
+</pre>
+<br />
+</td>
+</tr>
+</table>
+<strong><b>DATA LINEAGE SUMMARY: </b></strong>
+<br />
+<table width="60%">
+<tr>
+<td>
+<pre>
+This file was originally digitized by the National Mapping Division based
+on the sectional maps contained in 'The National Atlas of the United States
+of America' published by the USGS in 1970.  The 1:2,000,000-scale Digital
+Line Graph (DLG) data were merged into a single national hydrography
+coverage. Where necessary to effect the merge, alignment changes were
+made.  The names were taken from the USGS Topographic 1:100,000-scale
+maps.  For Alaska, the names were taken from the USGS Topographic
+1:250,000-scale maps.  State lines across water bodies were removed from
+the national coverage.  State attributes were assigned to the features.
+
+Some spatial features were added and corrected.  Some name attributes
+were added or corrected.  All occurrences of St. were changed to Saint.
+Extra spaces were removed from the attributes.  Hydrographic features
+for Puerto Rico and the U.S. Virgin Islands were added. A minor adjustment
+was made to the shoreline in Galveston Bay, Texas. The linear water feature
+attribute value, Intercoastal waterway, was changed to Intracoastal waterway.
+Process Date: 200212
+<br />
+The following steps were performed by ESRI: Downloaded the compressed
+file from the National Atlas of the United States and extracted it. Removed
+unneeded attributes. Removed all records except those with FEATURE
+attribute types of "Canal", "Glacier", "Lake", "Lake Dry", "Lake Intermittent",
+"Reservoir", "Reservoir Intermittent", "Stream", and "Swamp or Marsh".
+Reduced the attribute widths of FEATURE and NAME. Added attribute SQMI
+and calculated its values. Created ArcGIS layer file (.lyr), projection file (.prj),
+and spatial indices.
+Process Date: 20050317
+<br />
+GeoPlan downloaded the data from the ESRI ArcGIS 9 Data and Maps
+DVD in the Albers HGPN GCS_North_American_1983 projection. The data
+was reprojected into the Albers Conical Equal Area (Florida Geographic
+Data Library) projection.
+-----------------------------------------------------------------------
+- Dissolved layer to get rid of roads that criss cross the large areas (e.g. The Everglades)
+- Changed layer name from WATER_BODIES to MJWATERBND.
+- Selected features within and intersecting the state of Florida.
+- Added a DESCRIPT field based on NAME.
+- Added FGDLAQDATE based on date FGDL acquired the data.
+- Added AUTOID field.
+- Upcased fields.
+Process Date: 20080613
+<br />
+Data imported to ArcSDE and exported as a shapefile.
+Process Date: 20080619
+<br />
+</pre>
+</td>
+</tr>
+</table>
+<strong><b>MAP PROJECTION PARAMETERS: </b></strong>
+<br />
+<pre>
+Projection                          ALBERS
+Datum                               HPGN
+Units                               METERS
+Spheroid                            GRS1980
+1st Standard Parallel               24  0  0.000
+2nd Standard Parallel               31 30  0.000
+Central Meridian                   -84 00  0.000
+Latitude of Projection's Origin     24  0  0.000
+False Easting (meters)              400000.00000
+False Northing (meters)             0.00000
+</pre>
+<p>
+<strong><b>DATA SOURCE CONTACT (S):</b></strong>
+</p>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr>
+<td>
+<pre>
+Name:
+Abbr. Name:
+Address:
+
+
+Phone:
+
+Web site:
+E-mail:
+Contact Person:
+         Phone:
+        E-mail:
+</pre>
+</td>
+<td valign="top"><pre>ESRI
+USGS/ESRI
+380 New York Street
+Redlands, California
+92373-8100
+909-793-2853
+<br />
+http://coastalmap.marine.usgs.gov/GISdata/basemaps/usa/water/hydrogp020.htm
+info@esri.com
+Data Team
+</pre>
+</td>
+</tr>
+</table>
+<br />
+<strong><b>FGDL CONTACT:</b></strong>
+<pre>
+Name:                   FLORIDA GEOGRAPHIC DATA LIBRARY
+Abbr. Name:             FGDL
+Address:                Florida Geographic Data Library
+                        431 Architecture Building
+                        PO Box 115706
+                        Gainesville, FL  32611-5706
+Web site:               <a href="http://www.fgdl.org">http://www.fgdl.org</a>
+
+Contact FGDL: 
+
+      Technical Support:	        <a href="http://www.fgdl.org/fgdlfeed.html">http://www.fgdl.org/fgdlfeed.html</a>
+      FGDL Frequently Asked Questions:  <a href="http://www.fgdl.org/fgdlfaq.html">http://www.fgdl.org/fgdlfaq.html</a>
+      FGDL Mailing Lists:		<a href="http://www.fgdl.org/fgdl-l.html">http://www.fgdl.org/fgdl-l.html</a>
+      For FGDL Software:                <a href="http://www.fgdl.org/software.html">http://www.fgdl.org/software.html</a>
+</pre>
+</BODY>
+</HTML>

@@ -1,0 +1,1586 @@
+file.show("~/")
+list.files()
+list.files()
+setwd("/Volumes/HDD/Users/Zach/Documents/AAA_Git_projects/Pine_Rockland_LT_map/")
+list.files()
+loc <- read.csv(paste0(getwd(),"/Locality Data/pars_latlong_PR.csv"))
+loc <- read.csv(paste0(getwd(),"/Locality Data/parks_latlong_PR.csv"))
+head(loc)
+library(rgdal)
+hist <- readOGR(dsn=paste0(getwd(),"/Map Layer/Rocks2/rocks2.shp"),layer='rocks2',stringsAsFactors=FALSE)
+hist <- readOGR(dsn=paste0(getwd(),"/Map Layers/Rocks2/rocks2.shp"),layer='rocks2',stringsAsFactors=FALSE)
+curr <- readOGR(dsn=paste0(getwd(),"/Map Layers/Rocklands/Rocklands.shp"),layer='Rocklands',stringsAsFactors=FALSE)
+dade <- readOGR(dsn=paste0(getwd(),"/Map Layers/dade_pine_rockland_habitat_final/dade_pine_rockland_habitat_final.shp"),layer='dade_pine_rockland_habitat_final',stringsAsFactors=FALSE)
+plot(hist)
+plot(curr)
+plot(hist,col='seagreen')#
+plot(curr,col='firebrick2')
+plot(hist,col='seagreen')
+plot(curr,col='firebrick2',add=TRUE)
+flc <- readOGR(dsn='/Volumes/HDD/Users/Zach/Downloads/statecounties/STATECOUNTIES.shp',layer='STATECOUNTIES') #this reads in the florida counties as a SpatialPolygonsDataFrame#
+#
+wtb <- readOGR(dsn='/Volumes/HDD/Users/Zach/Downloads/mjwaterbnd/mjwaterbnd.shp',layer='mjwaterbnd',stringsAsFactors=FALSE)
+wtb$NAME
+flc$COUNTYNAME
+plot(flc[flc$COUNTYNAME=="BROWARD",])
+plot(flc[flc$COUNTYNAME=="BROWARD" | flc$COUNTYNAME=="DADE",])
+plot(hist,col='seagreen',add=TRUE)
+hist
+hist$proj4string
+slot(hist,"proj4string")
+slot(hist,"proj4string")#
+slot(curr,"proj4string")#
+slot(dade,"proj4string")#
+slot(flc,"proj4string")#
+slot(wtb,"proj4string")
+dade_fx <- spTransform(dade, CRS(proj4string(hist)))
+flc_fx <- spTransform(flc, CRS(proj4string(hist)))#
+wtb_fx <- spTransform(wtb, CRS(proj4string(hist)))
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])
+plot(hist,col='seagreen',add=TRUE)
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",])
+wtb_fx$NAME
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",])
+wtb_fx[wtb_fx$NAME=="THE EVERGLADES",]
+wtb[wtb$NAME=="LAKE OKEECHOBEE",]
+wtb$NAME[is.na(wtb$NAME)] <- ""
+wtb_fx <- spTransform(wtb, CRS(proj4string(hist)))
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",])
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col='sand')
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col='tan')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col='tan')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])#
+plot(wtb_fx,add=TRUE,col='tan')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col='tan2')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col='cornsilk1')
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col='cornsilk2')
+source("/Volumes/HDD/Users/Zach/Dropbox/Rcode/col2rgbA.r")
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA('darkseagreen',0.2))
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA('darkseagreen',0.2))
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="darkseagreen1")
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="darkseagreen1")
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="darkseagreen")
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="olivedrab3")
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="palegreen3")
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.2))
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))
+plot(hist,col='seagreen',add=TRUE)
+plot(hist,col='cornsilk2',add=TRUE)
+plot(curr,col='royalblue4',add=TRUE)
+class(flc_fx)
+methods(plot,"sp")
+methods(plot,"sp")[2]
+bbox(hist)
+source("/Volumes/HDD/Users/Zach/Documents/AAA_Git_projects/Pine_Rockland_LT_map/pr_map.R")
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))
+plot(hist,col='cornsilk2',add=TRUE)
+plot(curr,col='royalblue4',add=TRUE)
+plot(curr,col='royalblue',add=TRUE,border=NA)
+plot(curr,col='darkorange',add=TRUE,border=NA)
+plot(curr,col='darkorchid',add=TRUE,border=NA)
+plot(curr,col='deeppink',add=TRUE,border=NA)
+plot(curr,col='orchid1',add=TRUE,border=NA)
+plot(curr,col='seagreen1',add=TRUE,border=NA)
+plot(curr,col='turquoise3',add=TRUE,border=NA)
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)
+dade_fx
+symbols(dade_fx,stars,inches=FALSE,add=TRUE)
+coordinates(dade_fx)
+symbols(coordinates(dade_fx)[,1],coordinates(dade_fx)[,2],stars,inches=FALSE,add=TRUE)
+coordinates(dade_fx)[,1]
+coordinates(dade_fx)[,2]
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars,inches=FALSE,add=TRUE)
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=1,inches=FALSE,add=TRUE)
+source("/Volumes/HDD/Users/Zach/Documents/AAA_Git_projects/Pine_Rockland_LT_map/pr_map.R")
+source("/Volumes/HDD/Users/Zach/Documents/AAA_Git_projects/Pine_Rockland_LT_map/pr_map.R")
+source("/Volumes/HDD/Users/Zach/Documents/AAA_Git_projects/Pine_Rockland_LT_map/pr_map.R")
+source("/Volumes/HDD/Users/Zach/Documents/AAA_Git_projects/Pine_Rockland_LT_map/pr_map.R")
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=rep(1,length(coordinates(dade_fx)[,1]),inches=FALSE,add=TRUE)
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=rep(1,length(coordinates(dade_fx)[,1])),inches=FALSE,add=TRUE)
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(1,length(coordinates(dade_fx)[,1]),ncol=3),inches=FALSE,add=TRUE)
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(100,length(coordinates(dade_fx)[,1]),ncol=3),inches=FALSE,add=TRUE)
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(100,length(coordinates(dade_fx)[,1]),ncol=3),inches=FALSE,add=TRUE,col='red')
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(1000,length(coordinates(dade_fx)[,1]),ncol=3),inches=FALSE,add=TRUE,col='red')
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(10000,length(coordinates(dade_fx)[,1]),ncol=3),inches=FALSE,add=TRUE,col='red',)
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(10000,length(coordinates(dade_fx)[,1]),ncol=3),inches=FALSE,add=TRUE,bg='red')
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(10000,length(coordinates(dade_fx)[,1]),ncol=5),inches=FALSE,add=TRUE,bg='red')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)
+stars(x=coordinates(dade_fx),col='red')
+stars(x=coordinates(dade_fx),col.stars='red')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+stars(x=coordinates(dade_fx),col.stars='red',add=TRUE)
+stars(mtcars[, 1:7], key.loc = c(14, 2),#
+      main = "Motor Trend Cars : stars(*, full = F)", full = FALSE)
+stars(x=matrix(1,nrow=length(coordinates(dade_fx)[,1]),ncol=5),locations=coordinates(dade_fx),col.stars='red',add=TRUE)
+stars(x=matrix(1,nrow=length(coordinates(dade_fx)[,1]),ncol=5),locations=coordinates(dade_fx),col.stars='red')
+stars(x=matrix(1000,nrow=length(coordinates(dade_fx)[,1]),ncol=5),locations=coordinates(dade_fx),col.stars='red')
+stars(x=matrix(10000,nrow=length(coordinates(dade_fx)[,1]),ncol=5),locations=coordinates(dade_fx),col.stars='red')
+stars(x=matrix(10000,nrow=length(coordinates(dade_fx)[,1]),ncol=5),locations=coordinates(dade_fx),col.stars='red',scale=FALSE)
+stars(x=matrix(10000,nrow=length(coordinates(dade_fx)[,1]),ncol=7),locations=coordinates(dade_fx),col.stars='red',scale=FALSE)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 1000#
+v <- rep(scale,10)#
+v[seq(2,10)] <- scale*2/3#
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(v,length(coordinates(dade_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red')
+scale <- 5000#
+v <- rep(scale,10)#
+v[seq(2,10)] <- scale*2/3#
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(v,length(coordinates(dade_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red')
+v
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 5000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*2/3#
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(v,length(coordinates(dade_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 5000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(v,length(coordinates(dade_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 1500#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(dade_fx)[,1],y=coordinates(dade_fx)[,2],stars=matrix(v,length(coordinates(dade_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red')
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)
+loc
+loc_na <- loc[!is.na(loc$lat) & !is.na(loc$long),]
+loc_na
+SpatialPoints(coords=data.frame(x=loc$long,y=loc$lat) ,CRS(proj4string("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")))
+SpatialPoints(coords=data.frame(x=loc_na$long,y=loc_na$lat) ,CRS(proj4string("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")))
+SpatialPoints(coords=data.frame(x=loc_na$long,y=loc_na$lat) ,CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+loc_p <- SpatialPoints(coords=data.frame(x=loc_na$long,y=loc_na$lat) ,CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"))
+loc_fx <- spTransform(loc_p,CRS(proj4string(hist)))
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red')
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 1500#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,])#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 2000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue2',0.2))
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue2',0.2),col='white')
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))
+plot(hist,col='cornsilk2',add=TRUE)
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)
+scale <- 2000
+v <- rep(scale,10)
+v[seq(2,10,by=2)] <- scale*1/2
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.2),col='white')#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 2000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white')#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3))#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE)#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 2000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='red',fg=NA)
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white')#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border=NA)#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE,border="grey20")
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white')#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border=NA)#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 2000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white')#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 2000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border="grey50")#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+###pine rocklands#
+plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+scale <- 2000#
+v <- rep(scale,10)#
+v[seq(2,10,by=2)] <- scale*1/2#
+symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+pdf(file="PR_draft_1.pdf", width=4, height=5)#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border="grey50")#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+par(mar=c(1,1,1,1)#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border="grey50")#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+par(mar=c(1,1,1,1))#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border="grey50")#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+par(mar=c(1,1,1,1))#
+    plot(flc_fx[flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border="grey50")#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+pdf(file="PR_draft_1.pdf", width=4, height=5)#
+    par(mar=c(1,1,1,1))#
+    plot(flc_fx[flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border="grey50")#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+pdf(file="PR_draft_1.pdf", width=4, height=5)#
+    par(mar=c(1,1,1,1))#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border="grey50")#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+par(mar=c(1,1,1,1))#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+pdf(file="PR_draft_1.pdf", width=4, height=5)#
+    par(mar=c(1,1,1,1))#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70")#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA)#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA)#
+    scale <- 2000#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+locator(1)
+locator(2)
+locator(1)
+text(856640,614724,"BROWARD")#
+    text(856640,580452,"MIAMI-DADE")
+text(856640,614000,"BROWARD")#
+    text(856640,580452,"MIAMI-DADE")
+text(856640,610000,"BROWARD")
+text(856640,590000,"BROWARD")
+text(856640,598000,"BROWARD")
+text(856640,599000,"BROWARD")
+par(mar=c(1,1,1,1))#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text()#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    text(856640,599000,"BROWARD")#
+    text(856640,580452,"MIAMI-DADE")
+text(866640,599000,"BROWARD")
+text(866640,580452,"MIAMI-DADE")
+text(866640,600000,"BROWARD")
+text(866640,605000,"BROWARD")
+par(mar=c(1,1,1,1))#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(866640,605000,"BROWARD")#
+    text(866640,590000,"MIAMI-DADE")
+text(866640,585000,"MIAMI-DADE")
+par(mar=c(1,1,1,1))#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(866640,601000,"BROWARD")#
+    text(866640,585000,"MIAMI-DADE")
+text(886640,601000,"BROWARD")
+text(886640,585000,"MIAMI-DADE")
+par(mar=c(1,1,1,1))#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,601000,"BROWARD")#
+    text(886640,585000,"MIAMI-DADE")
+par(mar=c(1,1,1,1))#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD")#
+    text(886640,582000,"MIAMI-DADE")
+library(extrafont)#
+font_import()#
+fonts()
+font_import()
+pdf(file="PR_draft_1.pdf", width=4, height=6, family="Helvetica")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD")#
+    text(886640,582000,"MIAMI-DADE")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+pdf(file="PR_draft_1.pdf", width=4, height=6, family="Helvetica")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD")#
+    text(886640,582000,"MIAMI-DADE")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Helvetica")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD")#
+    text(886640,582000,"MIAMI-DADE")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+fonts()
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Pacifico")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey20')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey20')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Cambria")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey20')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey20')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+loadfonts()
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Pacifico")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey20')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey20')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+FONTS
+fonts()
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="MARKET DECO")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey20')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey20')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Market Deco")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey20')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey20')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Market Deco")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Market Deco")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40', family="QUARTZO demo")#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40', family="QUARTZO demo")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5)#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40', family="QUARTZO demo")#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40', family="QUARTZO demo")#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="QUARTZO demo")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Proza Libre")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+loadfonts()
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Proza Libre")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="FortuneCity")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Market Deco")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI - DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI - DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI - DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+fonts()
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Gill Sans MT")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI - DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Gill Sans MT")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI–DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Gill Sans MT")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+pdf(file="PR_draft_1.pdf", width=4, height=5.5, family="Gill Sans MT")#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()#
+embed_fonts("PR_draft_1.pdf", outfile="PR_draft_1_embed.pdf")
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+pdf(file="PR_draft_1.pdf", width=4, height=5.5)#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+#
+dev.off()
+locactor(1)
+locator(1)
+quartz("map",4,5.5)
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+locator(1)
+text(744419.7,347726.4,"EVERGLADES",cex=0.8,col="grey40")
+text(744419.7,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))
+locator(1)
+text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))
+legend(717016,562265.7,legend=c("Historic","Current","Sampling\nLocales"),pch=c(22,22,NA),pt.bg=c('cornsilk2','dodgerblue1',NA),col='grey20',fill='grey90',border='grey70')
+legend(717016,562265.7,legend=c("Historic","Current","Sampling\nLocales"),pch=c(22,22,NA),pt.bg=c('cornsilk2','dodgerblue1',NA),col='grey20',bg='grey90',border='grey70')
+legend(717016,562265.7,legend=c("Historic","Current","Sampling\nLocales"),pch=c(22,22,NA),pt.bg=c('cornsilk2','dodgerblue1',NA),col='grey20',bg='grey90',box.col='grey70')
+legend(717016,562265.7,legend=c("Historic","Current","Sampling\nLocales"),pch=c(22,22,NA),pt.bg=c('cornsilk2','dodgerblue1',NA),col='grey20',bg='grey99',box.col='grey70')
+legend(717016,562265.7,legend=c("Historic","Current","Sampling\nLocales"),pch=c(22,22,NA),pt.bg=c('cornsilk2','dodgerblue1',NA),col='grey20',bg='grey99',box.col='grey70',pt.cex=2)
+legend(717016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2)
+legend(717016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2)
+legend(717016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(717016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')
+legend(727016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')
+legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')
+legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')
+locator(1)
+scale2 <- 10000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 7000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+pdf(file="PR_draft_1.pdf", width=4, height=5.5)#
+# quartz("map",4,5.5)#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2000 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 7000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+pdf(file="PR_draft_1.pdf", width=4, height=5.5)#
+# quartz("map",4,5.5)#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=bbox(hist)[2,],bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2500 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 7000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+bbox(hist)[2,]
+bbox(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",])
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=c(bbox(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",])[2,1],bbox(hist)[2,2]),bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2500 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 7000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=c(bbox(flc_fx$COUNTYNAME=="DADE",])[2,1],bbox(hist)[2,2]),bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)
+bbox(flc_fx$COUNTYNAME=="DADE",])
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=c(bbox(flc_fx[flc_fx$COUNTYNAME=="DADE",])[2,1],bbox(hist)[2,2]),bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)
+plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2500 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 7000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=c(bbox(flc_fx[flc_fx$COUNTYNAME=="DADE",])[2,1]*1.1,bbox(hist)[2,2]),bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2500 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 7000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)
+pdf(file="PR_draft_1.pdf", width=4, height=5.5)#
+# quartz("map",4,5.5)#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=c(bbox(flc_fx[flc_fx$COUNTYNAME=="DADE",])[2,1]*1.1,bbox(hist)[2,2]),bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2500 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 7000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()
+proj4string(hist)
+pdf(file="PR_draft_1.pdf", width=4, height=5.5)#
+# quartz("map",4,5.5)#
+    par(mar=c(1,1,1,1))#
+#
+    ### counties#
+    #gets a white border base and blue sea#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" | flc_fx$COUNTYNAME=="MONROE",],xlim=bbox(hist)[1,],ylim=c(bbox(flc_fx[flc_fx$COUNTYNAME=="DADE",])[2,1]*1.1,bbox(hist)[2,2]),bg=col2rgbA('cadetblue3',0.3),col='white',border=NA)#
+    #plots white everglades (to erase borders of counties)#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col="white",border=NA)#
+    #plots light green everglades#
+    plot(wtb_fx[wtb_fx$NAME=="THE EVERGLADES",],add=TRUE,col=col2rgbA("darkseagreen",0.3),border="grey80")#
+    #overlays county borders#
+    plot(flc_fx[flc_fx$COUNTYNAME=="BROWARD" | flc_fx$COUNTYNAME=="DADE" |flc_fx$COUNTYNAME=="MONROE",],add=TRUE, border='grey50')#
+    text(886640,603000,"BROWARD",cex=0.8,col='grey40')#
+    text(886640,582000,"MIAMI-DADE",cex=0.8,col='grey40')#
+    text(788421.1,347726.4,"EVERGLADES",cex=0.8,col="grey40",adj=c(0.5,0.5))#
+#
+    ###pine rocklands#
+    plot(hist,col='cornsilk2',add=TRUE,border="grey70") #historical#
+    plot(curr,col='dodgerblue1',add=TRUE,border=NA) #current#
+    plot(dade_fx,col='dodgerblue1',add=TRUE,border=NA) #current#
+#
+    #for plotting the star shaped symbols (needs a 10 column matrix)#
+    scale <- 2500 #sets size#
+    v <- rep(scale,10)#
+    v[seq(2,10,by=2)] <- scale*1/2 #sets size of between points#
+    symbols(x=coordinates(loc_fx)[,1],y=coordinates(loc_fx)[,2],stars=matrix(v,length(coordinates(loc_fx)[,1]),ncol=length(v)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+    legend(707016,562265.7,legend=c("Historic","Current"),pch=c(22,22),pt.bg=c('cornsilk2','dodgerblue1'),col='grey20',pt.cex=2, ncol=2, bty='n')#
+    legend(707016,542265.7,legend=c("Sampling Locales"),pch=22,pt.bg=NA,col=NA,pt.cex=2,bty='n')#
+    scale2 <- 6000 #sets size#
+    v2 <- rep(scale2,10)#
+    v2[seq(2,10,by=2)] <- scale2*1/2#
+    symbols(x=717615.7,y=529287.2,stars=matrix(v2,1,ncol=length(v2)),inches=FALSE,add=TRUE,bg='coral1',fg=NA)#
+dev.off()

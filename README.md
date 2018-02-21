@@ -23,5 +23,4 @@ The routine is basically:
 	- units in feet
 4) Project the locality information
 5) Plot
-
-The current rendition sources local R files on Z. Siders' machine 
+ 
