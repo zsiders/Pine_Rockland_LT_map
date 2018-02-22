@@ -4,7 +4,7 @@
 
 ## Work in progress -- unfinalized
 
-[Best map so far](./PR_draft_AJB_mod2.png)
+![Best map so far](./PR_draft_AJB_mod2.png)
 
 
 #### The data is found in two folders:
